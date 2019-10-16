@@ -1,4 +1,4 @@
-module datatMem(data,address,wData,read,write);
+module DataMem(data,address,wData,read,write);
     output wire [31:0] data;
     input wire [31:0] wData;
     input wire [14:0] address;
@@ -25,5 +25,5 @@ module instMemTB();
         #1000
         pc = 4;
     end 
-    instMem mem(insData,pc);
+    DataMem mem(insData,pc);
 endmodule

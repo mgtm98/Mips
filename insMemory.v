@@ -1,4 +1,4 @@
-module instMem(insData,pc);
+module InstMem(insData,pc);
     input wire [14:0] pc;
     output wire [31:0] insData;
     reg [7:0] memory [0:32767];
@@ -15,8 +15,8 @@ module instMemTB();
     initial begin
         $display("i am here");
         pc = 0;
-        #1000
+        #2
         pc = 4;
     end 
-    instMem mem(insData,pc);
+    InstMem mem(insData,pc);
 endmodule

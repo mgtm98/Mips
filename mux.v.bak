@@ -12,7 +12,7 @@ module Mux_32(out,sel,in1,in2);
 endmodule
 
 module Mux_5(out,sel,in1,in2);
-    output reg [0:4] out;
+    output wire [0:4] out;
     input wire sel;
     input wire [0:4] in1;
     input wire [0:4] in2;
