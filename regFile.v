@@ -15,10 +15,10 @@ module RegFile(reg1Data,reg2Data,regW,r1A,r2A,wrA,wrD,clk);
     
     initial begin
         $readmemb("/home/mgtm/Verilog/reg.txt",Registers);
-        $display("WORKING !!!!!!");
+       $monitor("r1a::%b r2A::%b reg1Data::%b reg2Data::%b",r1A,r2A,reg1Data,reg2Data);
     end 
     
-    always @(posedge clk)begin
+    always @(negedge clk)begin
         if(regW)
             Registers[wrA] = wrD;
     end

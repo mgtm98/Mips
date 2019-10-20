@@ -14,8 +14,8 @@ module RegFile(reg1Data,reg2Data,regW,r1A,r2A,wrA,wrD,clk);
     assign reg2Data = Registers[r2A];
     
     initial begin
-        $readmemb("/home/mgtm/Verilog/reg.txt",memory);
-        $display("WORKING !!!!!!");
+        $readmemb("/home/mgtm/Verilog/reg.txt",Registers);
+       $monitor("r1a::%b r2A::%b reg1Data::%b reg2Data::%b",r1A,r2A,reg1Data,reg2Data);
     end 
     
     always @(posedge clk)begin

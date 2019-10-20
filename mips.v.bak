@@ -1,27 +1,5 @@
-module ALU(A, B, ALUCtrl, ALUOut, Zero);
-	input wire [3:0] ALUCtrl;
-	input wire [31:0] A;
-	input wire [31:0] B;
-	output reg [31:0] ALUOut;
-	output Zero;
-	
-	assign Zero = (ALUOut == 0);
-	always @(ALUCtrl, A, B)
-	begin
-		case(ALUCtrl)
-			0: 	ALUOut <= A & B;
-			1: 	ALUOut <= A | B;
-			2: 	ALUOut <= A + B;
-			6: 	ALUOut <= A - B;
-			7: 	ALUOut <= A < B ? 1 : 0;
-			12: ALUOut <= ~(A | B);
-			default: ALUOut <= 0; 
-		endcase
-	end
-endmodule
-
 module mipsTB();
-    reg [31:0] PC = 0;
+    reg [14:0] PC = -4;
     wire [31:0] ins;
     wire [5:0] OpCode;
     wire [4:0] rs;
@@ -46,16 +24,16 @@ module mipsTB();
     wire branchC;
     wire memReadC;
     wire memToRegC;
-    wire aluOpC;
+    wire [2:0] aluOpC;
     wire memWriteC;
     wire aluSrcC;
     wire regWriteC;
-    wire aluControlOutput;
+    wire [3:0] aluControlOutput;
     reg clk = 1;
 
     ALU alu(reg1Data, in_alu2, aluControlOutput, alu_output, zero);
     ALUControl alu_control(aluOpC, func, aluControlOutput);
-    Control controlUnit(OpCode, regDstC, Branch, memReadC, memToRegC, aluOpC, memWriteC, aluSrcC, RegWrite, Jump);
+    Control controlUnit(OpCode, regDstC, Branch, memReadC, memToRegC, aluOpC, memWriteC, aluSrcC, regWriteC, Jump);
     RegFile regFile(reg1Data,reg2Data,regWriteC,rs,rt,writeRegAdress,regFile_writeData,clk);
     DataMem data_memory(data_memory_data,alu_output,reg2Data,memReadC,memWriteC);
     InstMem insMemory(ins,PC);

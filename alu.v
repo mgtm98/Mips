@@ -5,7 +5,7 @@ module ALU(A, B, ALUCtrl, ALUOut, Zero);
 	output reg [31:0] ALUOut;
 	output Zero;
 	
-	assign Zero = (ALUOut == 0);
+	assign Zero = (ALUOut == 0) ? 1 : 0;
 	always @(ALUCtrl, A, B)
 	begin
 		case(ALUCtrl)
