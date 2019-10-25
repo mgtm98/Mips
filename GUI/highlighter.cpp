@@ -13,7 +13,7 @@ Highlighter::Highlighter(QTextDocument *parent):QSyntaxHighlighter(parent){
             QStringLiteral("\\bnor\\b"), QStringLiteral("\\bxor\\b"), QStringLiteral("\\bj\\b"),
             QStringLiteral("\\bjal\\b"), QStringLiteral("\\bbeq\\b"), QStringLiteral("\\bbne\\b"),
             QStringLiteral("\\blb\\b"), QStringLiteral("\\blh\\b"), QStringLiteral("\\bsb\\b"),
-            QStringLiteral("\\bsh\\b"),
+            QStringLiteral("\\bsh\\b"), QStringLiteral("\\bnop\\b"),
         };
     HighlightingRule rule;
     for (const QString &pattern : keywordPatterns) {

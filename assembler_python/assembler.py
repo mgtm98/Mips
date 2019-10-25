@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import sys
 
 
@@ -304,3 +305,4 @@ else:
 file = open(file_name, "w")
 file.write(full_code)
 file.close()
+print("Done")
